@@ -16,13 +16,11 @@ var nav = [{
 }];
 var bookRouter = require('./src/routes/bookRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
-var authRouter = require('./src/routes/authRoutes');
+var authRouter = require('./src/routes/authRoutes')(nav);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-/*app.use(bodyParser.urlencoded({
-    extended: false
-}));*/
+app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({
     secret: 'library'

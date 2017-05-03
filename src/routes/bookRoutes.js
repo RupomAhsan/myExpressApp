@@ -4,32 +4,13 @@ var objectId = require('mongodb').ObjectID;
 
 var bookRouter = express.Router();
 var router = function (nav) {
-    var books = [{
-        title: 'War and peace',
-        genre: 'Historical Fiction',
-        author: 'Lev Nikolayevich Tolostoy',
-        read: false
-    }, {
-        title: 'Les Miserables',
-        genre: 'Historical Fiction',
-        author: 'Vistor Hugo',
-        read: false
-    }, {
-        title: 'The Time Machine',
-        genre: 'Science Fiction',
-        author: 'H. G. Wells',
-        read: false
-    }, {
-        title: 'A Journey into the center of the Earth',
-        genre: 'Science Fiction',
-        author: 'Jules Verne',
-        read: false
-    }, {
-        title: 'The Dark World',
-        genre: 'Fantasy',
-        author: 'Henry Kuttner',
-        read: false
-    }];
+    bookRouter.use(function(req,res,next){
+        if(!req.user){
+            res.redirect('/');
+        }
+        next();
+    });    
+   
 
     bookRouter.route('/')
         .get(function (req, res) {

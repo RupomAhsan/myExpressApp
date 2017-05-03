@@ -5,11 +5,13 @@ var books = [{
     title: 'War and peace',
     genre: 'Historical Fiction',
     author: 'Lev Nikolayevich Tolostoy',
+    bookId:565,
     read: false
 }, {
     title: 'Les Miserables',
     genre: 'Historical Fiction',
     author: 'Vistor Hugo',
+    bookId:24280,
     read: false
 }, {
     title: 'The Time Machine',
@@ -27,7 +29,7 @@ var books = [{
     author: 'Henry Kuttner',
     read: false
 }];
-books=[];
+//books=[];
 var adminRouter = express.Router();
 var router = function (nav) {
     adminRouter.route('/addBooks')
